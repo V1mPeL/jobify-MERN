@@ -17,4 +17,4 @@ router
     .patch(validateJobInput, validateIdParam, updateJob)
     .delete(validateIdParam, deleteJob)
 
-export default router
+export default router;
