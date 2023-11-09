@@ -30,5 +30,6 @@ const Wrapper = styled.section`
     letter-spacing: var(--letter-spacing);
     margin-left: 0.25rem;
   }
+
 `;
 export default Wrapper;
