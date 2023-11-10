@@ -4,7 +4,7 @@ import { validateUpdateUserInput } from "../middleware/validationMiddleware.js";
 import { authorizedPermissions } from "../middleware/authMiddleware.js";
 const router = Router();
 
-router.get('/current', getCurrentUser);
+router.get('/current-user', getCurrentUser);
 router.get('/admin/app-stats', [
     authorizedPermissions('admin'), 
     getApplicationStats
