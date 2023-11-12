@@ -17,13 +17,13 @@ export const loader = async ({ params }) => {
   }
 };
 
-export const action = async ({request, params}) => {
+export const action = async ({ request, params }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   try {
-    await customFetch.patch(`/jobs/${params.id}`, data)
-    toast.success('Job edited successfully');
-    return redirect('/dashboard/all-jobs')
+    await customFetch.patch(`/jobs/${params.id}`, data);
+    toast.success("Job edited successfully");
+    return redirect("/dashboard/all-jobs");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -33,7 +33,7 @@ export const action = async ({request, params}) => {
 const EditJob = () => {
   const { job } = useLoaderData();
   const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting'
+  const isSubmitting = navigation.state === "submitting";
 
   return (
     <Wrapper>

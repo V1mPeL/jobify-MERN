@@ -1,20 +1,27 @@
-import React from 'react'
+import React from "react";
 
-const FormRowSelect = ({name, labelText, list, defaultValue=''}) => {
+const FormRowSelect = ({ name, labelText, list, defaultValue = "" }) => {
   return (
     <div className="form-row">
-        <label htmlFor="jobStatus" className='form-label'>
-            {labelText || name}
-        </label>
-        <select name={name} id={name} className='form-select' defaultValue={defaultValue}>
-            {list.map((itemValue)=>{
-            return <option key={itemValue} value={itemValue}>
-                {itemValue}
+      <label htmlFor="jobStatus" className="form-label">
+        {labelText || name}
+      </label>
+      <select
+        name={name}
+        id={name}
+        className="form-select"
+        defaultValue={defaultValue}
+      >
+        {list.map((itemValue) => {
+          return (
+            <option key={itemValue} value={itemValue}>
+              {itemValue}
             </option>
-            })}
-        </select>
+          );
+        })}
+      </select>
     </div>
-  )
-}
+  );
+};
 
-export default FormRowSelect
+export default FormRowSelect;
