@@ -1,18 +1,18 @@
-import React from "react";
-import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
-import { Form, redirect, useNavigation, Link } from "react-router-dom";
-import { FormRow, Logo } from "../components";
-import customFetch from "../utils/customFetch";
-import { toast } from "react-toastify";
+import React from 'react';
+import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
+import { Form, redirect, Link } from 'react-router-dom';
+import { FormRow, Logo, SubmitBtn } from '../components';
+import customFetch from '../utils/customFetch';
+import { toast } from 'react-toastify';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
   try {
-    await customFetch.post("/auth/register", data);
-    toast.success("Registration successful");
-    return redirect("/login");
+    await customFetch.post('/auth/register', data);
+    toast.success('Registration successful');
+    return redirect('/login');
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -20,31 +20,26 @@ export const action = async ({ request }) => {
 };
 
 const Register = () => {
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
-
   return (
     <Wrapper>
-      <Form method="post" className="form">
+      <Form method='post' className='form'>
         <Logo />
         <h4>Register</h4>
-        <FormRow type="text" name="name" defaultValue="john" />
+        <FormRow type='text' name='name' defaultValue='john' />
         <FormRow
-          type="text"
-          name="lastName"
-          defaultValue="gray"
-          labelText="last name"
+          type='text'
+          name='lastName'
+          defaultValue='gray'
+          labelText='last name'
         />
-        <FormRow type="text" name="location" defaultValue="sambir" />
-        <FormRow type="email" name="email" defaultValue="example@gmail.com" />
-        <FormRow type="password" name="password" defaultValue="password" />
-        <button type="submit" className="btn btn-block" disabled={isSubmitting}>
-          {isSubmitting ? "submitting..." : "submit"}
-        </button>
+        <FormRow type='text' name='location' defaultValue='sambir' />
+        <FormRow type='email' name='email' defaultValue='example@gmail.com' />
+        <FormRow type='password' name='password' defaultValue='password' />
+        <SubmitBtn formBtn />
         <p>
           Already a member?
-          <Link to="/login" className="member-btn">
-            {" "}
+          <Link to='/login' className='member-btn'>
+            {' '}
             Login
           </Link>
           `
